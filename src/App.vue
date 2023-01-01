@@ -1,7 +1,7 @@
 <template>
   <!-- <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/SelectPlan">Select Plan</router-link>
   </nav> -->
   <div class="main-wrapper">
     <div class="common-section">
@@ -13,11 +13,11 @@
       </ol>
     </div>
     <div class="main-section">
-      <PersonalInfo />
+      <!-- <PersonalInfo /> -->
+      <router-view />
     </div>
   </div>
 
-  <router-view />
 </template>
 
 <script>
@@ -67,8 +67,6 @@ body {
   box-sizing: border-box;
   background-color: hsl(217, 100%, 97%);
 }
-
-
 
 .main-wrapper {
   max-width: 750px;
