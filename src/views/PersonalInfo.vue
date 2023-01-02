@@ -3,16 +3,17 @@
   <p>Please provide your name, email address, and phone number.</p>
   <form novalidate="true">
     <label
-      >Name <span v-if="nameError">{{ nameError }}</span></label
+      >Name <span class="error" v-if="nameError">{{ nameError }}</span></label
     >
     <input
       type="text"
       placeholder="e.g. Stephen King"
       required
       v-model="name"
+      :class="{'errorInput': nameError}"
     />
     <label
-      >Email Address <span v-if="emailError">{{ emailError }}</span></label
+      >Email Address <span class="error" v-if="emailError">{{ emailError }}</span></label
     >
     <input
       type="email"
@@ -20,15 +21,17 @@
       required
       v-model="email"
       :state="null"
+      :class="{'errorInput': emailError}"
     />
     <label
-      >Phone Number <span v-if="phoneError">{{ phoneError }}</span></label
+      >Phone Number <span class="error" v-if="phoneError">{{ phoneError }}</span></label
     >
     <input
       type="tel"
       placeholder="e.g. +1 234 567 890"
       required
       v-model="phone"
+      :class="{'errorInput': phoneError}"
     />
     <button class="btn" @click.stop.prevent="submit">Next</button>
   </form>
@@ -50,8 +53,7 @@ export default {
     };
   },
   methods: {
-    submit: function (e) {
-      e.preventDefault();
+    submit: function () {
       if (!this.name) {
         this.nameError = this.errorMessage;
       }
@@ -71,21 +73,6 @@ export default {
         console.log(this.userData);
         this.$router.push({ name: "SelectPlan" });
       }
-
-      // if (this.name && this.email && this.phone) {
-      //   console.log("Submitted form");
-      //   this.userData.push({
-      //     name: this.name,
-      //     email: this.email,
-      //     phone: this.phone,
-      //   });
-      //   console.log(this.userData);
-      //   console.log(this.userData[0].phone);
-      //   this.$router.push({ name: "SelectPlan" });
-      // } else {
-      //   this.errorMessage = "Please fill all the fields";
-
-      // }
     },
     // validEmail: function (email) {
     //   var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -111,6 +98,9 @@ input {
   border: 1px solid #ccc;
   color: blue;
 }
+input.errorInput {
+  border: 1px solid red;
+}
 input:focus {
   outline: none;
   border: 1px solid blue;
@@ -130,5 +120,15 @@ input:focus {
   font-weight: 600;
   margin-top: 80px;
   cursor: pointer;
+}
+.btn:hover {
+  background-color: rgba(0, 0, 255, 0.781);
+
+}
+.error {
+  color: red;
+  font-weight: 600;
+  float: right;
+  clear: right;
 }
 </style>
