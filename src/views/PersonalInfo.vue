@@ -1,15 +1,36 @@
 <template>
   <h2>Personal info</h2>
   <p>Please provide your name, email address, and phone number.</p>
-  <form>
-    <label>Name <span v-if="errorMessage">{{ errorMessage }}</span></label> 
-    <input type="text" placeholder="e.g. Stephen King" required v-model="name" />
-    <label>Email Address</label>
-    <input type="email" placeholder="e.g. stephenking@lorem.com" required v-model="email" />
-    <label>Phone Number</label>
-    <input type="tel" placeholder="e.g. +1 234 567 890" required v-model="phone" />
-    <router-link :to="{ name: 'SelectPlan' }"
-      ><button class="btn" @click="submit()" type="submit">Next</button></router-link>
+  <form novalidate="true">
+    <label
+      >Name <span v-if="nameError">{{ nameError }}</span></label
+    >
+    <input
+      type="text"
+      placeholder="e.g. Stephen King"
+      required
+      v-model="name"
+    />
+    <label
+      >Email Address <span v-if="emailError">{{ emailError }}</span></label
+    >
+    <input
+      type="email"
+      placeholder="e.g. stephenking@lorem.com"
+      required
+      v-model="email"
+      :state="null"
+    />
+    <label
+      >Phone Number <span v-if="phoneError">{{ phoneError }}</span></label
+    >
+    <input
+      type="tel"
+      placeholder="e.g. +1 234 567 890"
+      required
+      v-model="phone"
+    />
+    <button class="btn" @click.stop.prevent="submit">Next</button>
   </form>
 </template>
 
@@ -22,29 +43,54 @@ export default {
       email: "",
       phone: "",
       userData: [],
-      errorMessage: ''
+      nameError: "",
+      emailError: "",
+      phoneError: "",
+      errorMessage: "This field is required",
     };
   },
   methods: {
-    submit() {
-      // if(!this.name){
-      //   this.errorMessage = "Please fill all the fields";}
-      // else if(!this.email){
-      //   this.errorMessage = "Please fill all the fields";}
-      // else if(!this.phone){
-      //   this.errorMessage = "Please fill all the fields";}
-      // else{
+    submit: function (e) {
+      e.preventDefault();
+      if (!this.name) {
+        this.nameError = this.errorMessage;
+      }
+      if (!this.email) {
+        this.emailError = this.errorMessage;
+      }
+      if (!this.phone) {
+        this.phoneError = this.errorMessage;
+      }
+      if (this.name && this.email && this.phone) {
+        console.log("Submitted form");
+        this.userData.push({
+          name: this.name,
+          email: this.email,
+          phone: this.phone,
+        });
+        console.log(this.userData);
+        this.$router.push({ name: "SelectPlan" });
+      }
+
+      // if (this.name && this.email && this.phone) {
       //   console.log("Submitted form");
       //   this.userData.push({
       //     name: this.name,
       //     email: this.email,
-      //     phone: this.phone
+      //     phone: this.phone,
       //   });
       //   console.log(this.userData);
       //   console.log(this.userData[0].phone);
-      // }
+      //   this.$router.push({ name: "SelectPlan" });
+      // } else {
+      //   this.errorMessage = "Please fill all the fields";
 
+      // }
     },
+    // validEmail: function (email) {
+    //   var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    //   return re.test(email);
+    // },
   },
 };
 </script>
