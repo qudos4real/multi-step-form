@@ -10,10 +10,11 @@
       placeholder="e.g. Stephen King"
       required
       v-model="name"
-      :class="{'errorInput': nameError}"
+      :class="{ errorInput: nameError }"
     />
     <label
-      >Email Address <span class="error" v-if="emailError">{{ emailError }}</span></label
+      >Email Address
+      <span class="error" v-if="emailError">{{ emailError }}</span></label
     >
     <input
       type="email"
@@ -21,17 +22,18 @@
       required
       v-model="email"
       :state="null"
-      :class="{'errorInput': emailError}"
+      :class="{ errorInput: emailError }"
     />
     <label
-      >Phone Number <span class="error" v-if="phoneError">{{ phoneError }}</span></label
+      >Phone Number
+      <span class="error" v-if="phoneError">{{ phoneError }}</span></label
     >
     <input
       type="tel"
       placeholder="e.g. +1 234 567 890"
       required
       v-model="phone"
-      :class="{'errorInput': phoneError}"
+      :class="{ errorInput: phoneError }"
     />
     <button class="btn" @click.stop.prevent="submit">Next</button>
   </form>
@@ -50,6 +52,8 @@ export default {
       emailError: "",
       phoneError: "",
       errorMessage: "This field is required",
+      ActivePage: 1,
+      checkActive: false,
     };
   },
   methods: {
@@ -74,11 +78,19 @@ export default {
         this.$router.push({ name: "SelectPlan" });
       }
     },
-    // validEmail: function (email) {
-    //   var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    //   return re.test(email);
+    // checkActivePage: function () {
+    //   if (this.ActivePage === 1) {
+    //     this.checkActive = true;
+    //   } else {
+    //     this.checkActive = false;
+    //   }
+    //   console.log(this.checkActive);
     // },
   },
+  // mounted() {
+  //   this.checkActivePage();
+  // },
+
 };
 </script>
 
@@ -123,7 +135,6 @@ input:focus {
 }
 .btn:hover {
   background-color: rgba(0, 0, 255, 0.781);
-
 }
 .error {
   color: red;

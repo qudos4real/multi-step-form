@@ -5,15 +5,15 @@
   </nav> -->
   <div class="main-wrapper">
     <div class="common-section">
-      <ol>
-        <li v-for="item in sidebarData" :key="item.step">
+        <div v-for="item in sidebarData" :key="item.key" class="list">
+          <div class="key-wrap"><h3 class="key">{{ item.key }}</h3> </div>
+          <div class="list2">
           <h3 class="step">{{ item.step }}</h3>
           <p class="title">{{ item.title }}</p>
-        </li>
-      </ol>
+        </div>
+        </div>
     </div>
     <div class="main-section">
-      <!-- <PersonalInfo /> -->
       <router-view />
     </div>
   </div>
@@ -31,24 +31,29 @@ export default {
     return {
       sidebarData: [
         {
+          key: 1,
           step: "Step 1",
           title: "Your Info",
         },
         {
+          key: 2,
           step: "Step 2",
           title: "Select Plan",
         },
         {
+          key: 3,
           step: "Step 3",
           title: "Add-ons",
         },
         {
+          key: 4,
           step: "Step 4",
           title: "Summary",
         },
       ],
     };
   },
+  
 };
 </script>
 
@@ -88,6 +93,46 @@ body {
   /* margin: 5px; */
   display: inline-block;
 }
+.list {
+  margin: 20px 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-transform: uppercase;
+}
+.list>.key-wrap {
+  border: white solid 1px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.list .key {
+  margin: 0px;
+  padding: 0px;  
+  padding-top: 10px;
+  color: white;
+}
+.list2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.step {
+  font-size: 12px;
+  font-weight: 100;
+  color: rgba(255, 255, 255, 0.541);
+  margin: 10px 0;
+}
+.title {
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  margin: 10px 0;
+
+}
+
 .main-section {
   width: 55%;
   text-align: left;
