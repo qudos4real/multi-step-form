@@ -8,6 +8,13 @@
       <p>{{ plan.price }}</p>
     </div>
   </div>
+  <div class="switch-time">
+    <h3 class="time" :class="{active : !yearly}">Monthly</h3>
+    <div class="switch">
+      <input type="checkbox" v-model="yearly">
+    </div>
+    <h3 class="time" :class="{active : yearly}">Yearly</h3>
+  </div>
 </template>
 
 <script>
@@ -32,14 +39,14 @@ export default {
           price: "$15/mo",
         },
       ],
-      selectArcade: false,
-      selectAdvanced: false,
-      selectPro: false,
+      yearly: false,
+      // selectArcade: false,
+      // selectAdvanced: false,
+      // selectPro: false,
     };
   },
   methods: {
     selectPlan(plan) {
-      console.log(plan.target.children[1].innerText);
       
       // if (plan.title === "arcade") {
       //   this.selectArcade = true;
@@ -83,7 +90,7 @@ export default {
   height: 50px;
   margin-bottom: 20px;
 }
-.plan h3 {
+.plan h3, .switch-time h3 {
   /* font-size: 14px; */
   font-weight: 700;
   color: rgba(0, 0, 139, 0.856);
@@ -94,4 +101,68 @@ export default {
   font-weight: 100;
   color: #00000070;
 }
+.switch-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(207, 203, 203, 0.205);
+  margin-top: 15px;
+  padding: 5px; 
+}
+.switch-time>.time {
+  margin: 0 10px;
+  color: rgba(0, 0, 0, 0.521);
+}
+.time.active {
+  color: darkblue;
+}
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  position: relative;
+  width: 50px;
+  height: 0;
+  border-radius: 20px;
+  background: darkblue;
+  transition: background 0.3s;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  /* transform: translate(0%, 0%); */
+  background: #fff;
+  top: 5px;
+  left: 0;
+  transition: 0.3s;
+  border: none;
+  outline: none;
+}
+input[type="checkbox"]:checked::after {
+  left: 60%;
+}
+/* input[type="checkbox"]:checked {
+  background: #000000;
+}
+input[type="checkbox"]:before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  top: 0;
+  left: 0;
+  transition: 0.3s;
+}
+input[type="checkbox"]:checked:before {
+  left: 20px;
+}
+ input[type="checkbox"]:checked {
+  background: #000000;
+}  */
 </style>
