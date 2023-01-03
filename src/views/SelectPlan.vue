@@ -15,6 +15,10 @@
     </div>
     <h3 class="time" :class="{active : yearly}">Yearly</h3>
   </div>
+  <footer>
+    <h3 @click="back"> Go back</h3>
+    <button class="btn footerItem" @click="next">Next</button>
+  </footer>
 </template>
 
 <script>
@@ -46,8 +50,14 @@ export default {
     };
   },
   methods: {
-    selectPlan(plan) {
-      
+    next() {
+      this.$router.push({ name: "Addons" });
+    },
+    back() {
+      this.$router.go(-1);
+    },
+    // selectPlan(plan) {
+      // 
       // if (plan.title === "arcade") {
       //   this.selectArcade = true;
       //   this.selectAdvanced = false;
@@ -64,7 +74,7 @@ export default {
       //   this.selectPro = true;
       //   console.log(this.selectPro);
       // }
-    },
+    
   },
 };
 </script>
@@ -145,24 +155,13 @@ input[type="checkbox"]::after {
 input[type="checkbox"]:checked::after {
   left: 60%;
 }
-/* input[type="checkbox"]:checked {
-  background: #000000;
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 90px;
 }
-input[type="checkbox"]:before {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #fff;
-  top: 0;
-  left: 0;
-  transition: 0.3s;
+.btn.footerItem {
+  margin: 0 10px 0 0;
 }
-input[type="checkbox"]:checked:before {
-  left: 20px;
-}
- input[type="checkbox"]:checked {
-  background: #000000;
-}  */
 </style>
