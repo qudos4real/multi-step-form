@@ -164,4 +164,8 @@ footer {
 .btn.footerItem {
   margin: 0 10px 0 0;
 }
+footer>h3 {
+  color: rgba(0, 0, 139, 0.856);
+  cursor: pointer;
+}
 </style>
