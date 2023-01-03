@@ -136,7 +136,7 @@ body {
 .main-section {
   width: 55%;
   text-align: left;
-  margin: 30px;
+  margin: 5px 30px;
 }
 
 /* .main-wrapper {
