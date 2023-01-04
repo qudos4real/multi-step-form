@@ -69,26 +69,7 @@ export default {
         this.active[index] = !this.active[index];
         console.log(this.active[index]);
       }
-    },  
-    // selectPlan(plan) {
-      // 
-      // if (plan.title === "arcade") {
-      //   this.selectArcade = true;
-      //   this.selectAdvanced = false;
-      //   this.selectPro = false;
-      //   console.log(this.selectArcade);
-      // } else if (plan === "advanced") {
-      //   this.selectArcade = false;
-      //   this.selectAdvanced = true;
-      //   this.selectPro = false;
-      //   console.log(this.selectAdvanced);
-      // } else if (plan === "pro") {
-      //   this.selectArcade = false;
-      //   this.selectAdvanced = false;
-      //   this.selectPro = true;
-      //   console.log(this.selectPro);
-      // }
-    
+    },     
   },
 };
 </script>
@@ -143,7 +124,7 @@ export default {
 .time.active {
   color: darkblue;
 }
-input[type="checkbox"] {
+.switch>input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
   position: relative;
@@ -156,7 +137,7 @@ input[type="checkbox"] {
   border: none;
   cursor: pointer;
 }
-input[type="checkbox"]::after {
+.switch>input[type="checkbox"]::after {
   content: "";
   position: absolute;
   width: 1.25rem;
@@ -169,7 +150,7 @@ input[type="checkbox"]::after {
   border: none;
   outline: none;
 }
-input[type="checkbox"]:checked::after {
+.switch>input[type="checkbox"]:checked::after {
   left: 60%;
 }
 footer {

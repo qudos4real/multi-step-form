@@ -19,7 +19,7 @@
 <script>
 import PersonalInfo from "./views/PersonalInfo.vue";
 export default {
-  // name: 'App',
+  name: 'App',
   components: {
     PersonalInfo,
   },
