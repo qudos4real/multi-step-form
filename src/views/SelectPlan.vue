@@ -2,7 +2,8 @@
   <h2>Select your plan</h2>
   <p>You have the option of monthly or yearly billing.</p>
   <div class="plans">
-    <div v-for="plan in plans" :key="plan.title" class="plan" @click="selectPlan">
+
+    <div v-for="(plan, index) in plans" :key="index" class="plan" :class="{activePlan : active[index]}" @click="toggleActive(index)">
       <img :src="plan.img" alt="plan" />
       <h3>{{ plan.title }}</h3>
       <p>{{ plan.price }}</p>
@@ -44,9 +45,10 @@ export default {
         },
       ],
       yearly: false,
-      // selectArcade: false,
-      // selectAdvanced: false,
-      // selectPro: false,
+      selectArcade: false,
+      selectAdvanced: false,
+      selectPro: false,
+      active: [false, false, false]
     };
   },
   methods: {
@@ -56,6 +58,18 @@ export default {
     back() {
       this.$router.go(-1);
     },
+    toggleActive(index) {
+      if(index === 0) {
+        this.active[index] = !this.active[index];
+        console.log(this.active[index]);
+      } else if(index === 1) {
+        this.active[index] = !this.active[index];
+        console.log(this.active[index]);
+      } else if(index === 2) {
+        this.active[index] = !this.active[index];
+        console.log(this.active[index]);
+      }
+    },  
     // selectPlan(plan) {
       // 
       // if (plan.title === "arcade") {
@@ -111,6 +125,9 @@ export default {
   font-weight: 100;
   color: #00000070;
 }
+.plan.activePlan {
+  border: 1px solid blue;
+}
 .switch-time {
   display: flex;
   justify-content: center;
@@ -144,7 +161,6 @@ input[type="checkbox"]::after {
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 50%;
-  /* transform: translate(0%, 0%); */
   background: #fff;
   top: 5px;
   left: 0;

@@ -1,8 +1,4 @@
 <template>
-  <!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/SelectPlan">Select Plan</router-link>
-  </nav> -->
   <div class="main-wrapper">
     <div class="common-section">
         <div v-for="item in sidebarData" :key="item.key" class="list">
@@ -74,7 +70,7 @@ body {
 }
 
 .main-wrapper {
-  max-width: 750px;
+  max-width: 800px;
   /* height: 600px; */
   /* width: 50%; */
   display: flex;
