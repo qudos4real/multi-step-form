@@ -3,12 +3,16 @@
   <p>Add-ons help enhance your gaming experience.</p>
   <div class="addonWrapper">
     <div v-for="addon in addonServices" :key="addon.name" class="addonList">
-      <input type="checkbox">
       <div>
-        <h3>{{ addon.title }}</h3>
-        <p>{{ addon.desc }}</p>
+        <input type="checkbox">
+        <div class="titleDesc">
+          <h3>{{ addon.title }}</h3>
+          <p>{{ addon.desc }}</p>
+        </div>
       </div>
-      {{ addon.price }}
+      <h3 class="price">
+        {{ addon.price }}
+      </h3>
 
     </div>
   </div>
@@ -45,5 +49,47 @@ export default {
 .addonList {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  border: 1px solid #e5e5e5;
+  padding: 15px;
+  margin: 12px 0;
+  border-radius: 15px;
+  cursor: pointer;
 }
+.addonList > div {
+  display: flex;
+  align-items: center;
+}
+.addonList input {
+  margin: 0;
+  width: auto;
+  margin: auto 40px auto 0;
+  transform: scale(1.5);
+  color: rgba(128, 128, 128, 0.603);
+}
+
+.titleDesc > h3 {
+  /* margin: 0; */
+  margin-bottom: 5px;
+  color: grey;
+}
+.titleDesc > p {
+  /* margin: 0; */
+  margin-top: 3px;
+  font-size: 14px;
+  color: rgba(128, 128, 128, 0.603);
+}
+.price {
+  color: rgba(0, 0, 255, 0.781);
+}
+/* 
+  display: inline;
+}
+.titleDesc>p {
+
+  margin: 0;
+  margin-top: 2px;
+} */
+
+
 </style>
