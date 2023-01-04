@@ -4,7 +4,7 @@
   <div class="addonWrapper">
     <div v-for="addon in addonServices" :key="addon.name" class="addonList">
       <div>
-        <input type="checkbox">
+        <input type="checkbox" />
         <div class="titleDesc">
           <h3>{{ addon.title }}</h3>
           <p>{{ addon.desc }}</p>
@@ -13,8 +13,12 @@
       <h3 class="price">
         {{ addon.price }}
       </h3>
-
     </div>
+
+    <footer class="addonsFooter">
+      <h3 @click="back">Go back</h3>
+      <button class="btn footerItem" @click="next">Next</button>
+    </footer>
   </div>
 </template>
 
@@ -23,24 +27,32 @@ export default {
   name: "Addons",
   data() {
     return {
-    addonServices: [
-      {
-        title: "Online service",
-        desc: "Access to multiplayer games",
-        price: "$1/mo",
-      },
-      {
-        title: "Larger storage",
-        desc: "Extra 1TB of cloud save",
-        price: "$2/mo",
-      },
-      {
-        title: "Customizable Profile",
-        desc: "Custom theme on your profile",
-        price: "$2/mo",
-      },
-    ],
+      addonServices: [
+        {
+          title: "Online service",
+          desc: "Access to multiplayer games",
+          price: "$1/mo",
+        },
+        {
+          title: "Larger storage",
+          desc: "Extra 1TB of cloud save",
+          price: "$2/mo",
+        },
+        {
+          title: "Customizable Profile",
+          desc: "Custom theme on your profile",
+          price: "$2/mo",
+        },
+      ],
     };
+  },
+  methods: {
+    next() {
+      this.$router.push({ name: "Summary" });
+    },
+    back() {
+      this.$router.go(-1);
+    },
   },
 };
 </script>
@@ -82,14 +94,7 @@ export default {
 .price {
   color: rgba(0, 0, 255, 0.781);
 }
-/* 
-  display: inline;
+.addonsFooter {
+  margin-top: 50px;
 }
-.titleDesc>p {
-
-  margin: 0;
-  margin-top: 2px;
-} */
-
-
 </style>

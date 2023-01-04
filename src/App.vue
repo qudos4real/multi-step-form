@@ -132,7 +132,7 @@ body {
 .main-section {
   width: 55%;
   text-align: left;
-  margin: 5px 30px;
+  margin: 0 30px;
 }
 
 /* .main-wrapper {
