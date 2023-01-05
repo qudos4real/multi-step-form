@@ -2,22 +2,27 @@
   <h2>Select your plan</h2>
   <p>You have the option of monthly or yearly billing.</p>
   <div class="plans">
-
-    <div v-for="(plan, index) in plans" :key="index" class="plan" :class="{activePlan : active[index]}" @click="toggleActive(index)">
+    <div
+      v-for="(plan, index) in plans"
+      :key="index"
+      class="plan"
+      :class="{ activePlan: active[index] }"
+      @click="toggleActive(index)"
+    >
       <img :src="plan.img" alt="plan" />
       <h3>{{ plan.title }}</h3>
       <p>{{ plan.price }}</p>
     </div>
   </div>
   <div class="switch-time">
-    <h3 class="time" :class="{active : !yearly}">Monthly</h3>
+    <h3 class="time" :class="{ active: !yearly }">Monthly</h3>
     <div class="switch">
-      <input type="checkbox" v-model="yearly">
+      <input type="checkbox" v-model="yearly" />
     </div>
-    <h3 class="time" :class="{active : yearly}">Yearly</h3>
+    <h3 class="time" :class="{ active: yearly }">Yearly</h3>
   </div>
   <footer>
-    <h3 @click="back"> Go back</h3>
+    <h3 @click="back">Go back</h3>
     <button class="btn footerItem" @click="next">Next</button>
   </footer>
 </template>
@@ -45,31 +50,39 @@ export default {
         },
       ],
       yearly: false,
-      selectArcade: false,
-      selectAdvanced: false,
-      selectPro: false,
-      active: [false, false, false]
+      // selectArcade: false,
+      // selectAdvanced: false,
+      // selectPro: false,
+      active: [false, false, false],
     };
+  },
+  computed: {
+    plansSelected() {
+      return {
+        yearly: this.yearly,
+        Arcade: this.active[0],
+        Advanced: this.active[1],
+        Pro: this.active[2],
+      }
+    },
   },
   methods: {
     next() {
+      sessionStorage.setItem("plansSelected", JSON.stringify(this.plansSelected));
       this.$router.push({ name: "Addons" });
     },
     back() {
       this.$router.go(-1);
     },
     toggleActive(index) {
-      if(index === 0) {
+      if (index === 0) {
         this.active[index] = !this.active[index];
-        console.log(this.active[index]);
-      } else if(index === 1) {
+      } else if (index === 1) {
         this.active[index] = !this.active[index];
-        console.log(this.active[index]);
-      } else if(index === 2) {
+      } else if (index === 2) {
         this.active[index] = !this.active[index];
-        console.log(this.active[index]);
       }
-    },     
+    },
   },
 };
 </script>
@@ -95,7 +108,8 @@ export default {
   height: 50px;
   margin-bottom: 20px;
 }
-.plan h3, .switch-time h3 {
+.plan h3,
+.switch-time h3 {
   /* font-size: 14px; */
   font-weight: 700;
   color: rgba(0, 0, 139, 0.856);
@@ -108,6 +122,7 @@ export default {
 }
 .plan.activePlan {
   border: 1px solid blue;
+  background-color: rgba(128, 128, 128, 0.047);
 }
 .switch-time {
   display: flex;
@@ -115,16 +130,16 @@ export default {
   align-items: center;
   background-color: rgba(207, 203, 203, 0.205);
   margin-top: 15px;
-  padding: 5px; 
+  padding: 5px;
 }
-.switch-time>.time {
+.switch-time > .time {
   margin: 0 10px;
   color: rgba(0, 0, 0, 0.521);
 }
 .time.active {
   color: darkblue;
 }
-.switch>input[type="checkbox"] {
+.switch > input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
   position: relative;
@@ -137,7 +152,7 @@ export default {
   border: none;
   cursor: pointer;
 }
-.switch>input[type="checkbox"]::after {
+.switch > input[type="checkbox"]::after {
   content: "";
   position: absolute;
   width: 1.25rem;
@@ -150,7 +165,7 @@ export default {
   border: none;
   outline: none;
 }
-.switch>input[type="checkbox"]:checked::after {
+.switch > input[type="checkbox"]:checked::after {
   left: 60%;
 }
 footer {
@@ -162,7 +177,7 @@ footer {
 .btn.footerItem {
   margin: 0 10px 0 0;
 }
-footer>h3 {
+footer > h3 {
   color: rgba(0, 0, 139, 0.856);
   cursor: pointer;
 }

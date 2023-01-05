@@ -74,7 +74,10 @@ export default {
           email: this.email,
           phone: this.phone,
         });
-        console.log(this.userData);
+        // localStorage.setItem("name", this.name);
+        // localStorage.setItem("email", this.email);
+        // localStorage.setItem("phone", this.phone);
+        sessionStorage.setItem("userData", JSON.stringify(this.userData));
         this.$router.push({ name: "SelectPlan" });
       }
     },

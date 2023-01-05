@@ -44,16 +44,30 @@ export default {
           price: "$2/mo",
         },
       ],
+      onlineService: false,
+      largerStorage: false,
+      customizableProfile: false,
     };
   },
   methods: {
     next() {
+      sessionStorage.setItem("addons", JSON.stringify(this.addonSelected));
+      console.log(sessionStorage);
       this.$router.push({ name: "Summary" });
     },
     back() {
       this.$router.go(-1);
     },
   },
+  computed: {
+      addonSelected() {
+        return {
+          onlineService: this.onlineService,
+          largerStorage: this.largerStorage,
+          customizableProfile: this.customizableProfile,
+        }
+      }
+  }      
 };
 </script>
 
