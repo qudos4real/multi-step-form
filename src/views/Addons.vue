@@ -46,7 +46,7 @@ export default {
           normIndex: 3,
         },
       ],
-      checkModel: [true, false, true],
+      checkModel: [false, false, false],
       onlineService: false,
       largerStorage: false,
       customizableProfile: false,
@@ -68,11 +68,6 @@ export default {
     back() {
       this.$router.go(-1);
     },
-    check() {
-      // console.log(this.checkModel)
-
-      console.log(this.onlineService + " " + this.largerStorage + " " + this.customizableProfile)      
-    }
   },
   };
 </script>
