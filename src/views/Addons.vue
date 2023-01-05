@@ -2,7 +2,7 @@
   <h2>Pick add-ons</h2>
   <p>Add-ons help enhance your gaming experience.</p>
   <div class="addonWrapper">
-    <div v-for="addon, index in addonServices" :key="index" class="addonList">
+    <div v-for="addon, index in addonServices" :key="index" class="addonList" :class="{activePlan : checkModel[addon.normIndex]==true}">
       <div>
         <input type="checkbox" v-model="checkModel[addon.normIndex]"/>
         <div class="titleDesc">

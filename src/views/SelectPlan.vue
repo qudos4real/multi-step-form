@@ -120,7 +120,7 @@ export default {
   font-weight: 100;
   color: #00000070;
 }
-.plan.activePlan {
+.activePlan {
   border: 1px solid blue;
   background-color: rgba(128, 128, 128, 0.047);
 }
