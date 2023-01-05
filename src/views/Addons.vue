@@ -2,9 +2,9 @@
   <h2>Pick add-ons</h2>
   <p>Add-ons help enhance your gaming experience.</p>
   <div class="addonWrapper">
-    <div v-for="addon in addonServices" :key="addon.name" class="addonList">
+    <div v-for="addon, index in addonServices" :key="index" class="addonList">
       <div>
-        <input type="checkbox" />
+        <input type="checkbox" v-model="checkModel[addon.normIndex]"/>
         <div class="titleDesc">
           <h3>{{ addon.title }}</h3>
           <p>{{ addon.desc }}</p>
@@ -14,7 +14,6 @@
         {{ addon.price }}
       </h3>
     </div>
-
     <footer class="addonsFooter">
       <h3 @click="back">Go back</h3>
       <button class="btn footerItem" @click="next">Next</button>
@@ -32,18 +31,22 @@ export default {
           title: "Online service",
           desc: "Access to multiplayer games",
           price: "$1/mo",
+          normIndex: 1,
         },
         {
           title: "Larger storage",
           desc: "Extra 1TB of cloud save",
           price: "$2/mo",
+          normIndex: 2,
         },
         {
           title: "Customizable Profile",
           desc: "Custom theme on your profile",
           price: "$2/mo",
+          normIndex: 3,
         },
       ],
+      checkModel: [true, false, true],
       onlineService: false,
       largerStorage: false,
       customizableProfile: false,
@@ -51,24 +54,27 @@ export default {
   },
   methods: {
     next() {
+      this.onlineService = this.checkModel[1],
+      this.largerStorage = this.checkModel[2],
+      this.customizableProfile = this.checkModel[3],
+      this.addonSelected = {
+        onlineService: this.onlineService,
+        largerStorage: this.largerStorage,
+        customizableProfile: this.customizableProfile,
+      }
       sessionStorage.setItem("addons", JSON.stringify(this.addonSelected));
-      console.log(sessionStorage);
       this.$router.push({ name: "Summary" });
     },
     back() {
       this.$router.go(-1);
     },
+    check() {
+      // console.log(this.checkModel)
+
+      console.log(this.onlineService + " " + this.largerStorage + " " + this.customizableProfile)      
+    }
   },
-  computed: {
-      addonSelected() {
-        return {
-          onlineService: this.onlineService,
-          largerStorage: this.largerStorage,
-          customizableProfile: this.customizableProfile,
-        }
-      }
-  }      
-};
+  };
 </script>
 
 <style>
