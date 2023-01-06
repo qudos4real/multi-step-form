@@ -11,7 +11,11 @@
     >
       <img :src="plan.img" alt="plan" />
       <h3>{{ plan.title }}</h3>
-      <p>{{ plan.price }}</p>
+      <p v-if="!yearly">{{ plan.price }}</p>
+      <div class="yearly" v-if="yearly">
+        <p>{{ plan.yearlyPrice }}</p>
+        <p class="free">2 months free</p>
+      </div>
     </div>
   </div>
   <div class="switch-time">
@@ -37,16 +41,19 @@ export default {
           img: require("../assets/images/icon-arcade.svg"),
           title: "Arcade",
           price: "$9/mo",
+          yearlyPrice: "$90/yr",
         },
         {
           img: require("../assets/images/icon-advanced.svg"),
           title: "Advanced ",
           price: "$12/mo",
+          yearlyPrice: "$120/yr",
         },
         {
           img: require("../assets/images/icon-pro.svg"),
           title: "Pro ",
           price: "$15/mo",
+          yearlyPrice: "$150/yr",
         },
       ],
       yearly: false,
@@ -97,7 +104,7 @@ export default {
   width: 20%;
   border: 1px solid #e5e5e5;
   border-radius: 10px;
-  padding: 20px 35px 20px 15px;
+  padding: 20px 25px 20px 15px;
   text-align: left;
   margin: 5px;
   cursor: pointer;
@@ -167,6 +174,12 @@ export default {
 }
 .switch > input[type="checkbox"]:checked::after {
   left: 60%;
+}
+.yearly>.free {
+  font-size: 14px;
+  font-weight: 100;
+  color: darkblue;
+  margin-top: 4px;
 }
 footer {
   display: flex;
