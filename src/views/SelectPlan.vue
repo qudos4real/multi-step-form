@@ -25,6 +25,7 @@
     </div>
     <h3 class="time" :class="{ active: yearly }">Yearly</h3>
   </div>
+  <div @click="check">Just checking</div>
   <footer>
     <h3 @click="back">Go back</h3>
     <button class="btn footerItem" @click="next">Next</button>
@@ -61,22 +62,24 @@ export default {
       // selectAdvanced: false,
       // selectPro: false,
       active: [false, false, false],
+      plan: "",
+      planPrice: "",
     };
   },
   computed: {
-    plansSelected() {
+    planSelected() {
       return {
-        yearly: this.yearly,
-        Arcade: this.active[0],
-        Advanced: this.active[1],
-        Pro: this.active[2],
-      }
+        plan: this.plan,
+        planPrice: this.planPrice,
+      };
     },
   },
   methods: {
     next() {
-      sessionStorage.setItem("plansSelected", JSON.stringify(this.plansSelected));
-      this.$router.push({ name: "Addons" });
+      this.check();
+      sessionStorage.setItem("planSelected", JSON.stringify(this.planSelected));
+      console.log(sessionStorage);
+      // this.$router.push({ name: "Addons" });
     },
     back() {
       this.$router.go(-1);
@@ -84,13 +87,47 @@ export default {
     toggleActive(index) {
       if (index === 0) {
         this.active[index] = !this.active[index];
+        this.active[1] = false;
+        this.active[2] = false;
       } else if (index === 1) {
         this.active[index] = !this.active[index];
+        this.active[0] = false;
+        this.active[2] = false;
       } else if (index === 2) {
         this.active[index] = !this.active[index];
+        this.active[0] = false;
+        this.active[1] = false;
       }
     },
-  },
+    check() {
+        if (this.active[0]) {
+          if (this.yearly) {
+            this.plan = this.plans[0].title;
+            this.planPrice = this.plans[0].yearlyPrice;
+          } else {
+            this.plan = this.plans[0].title;
+            this.planPrice = this.plans[0].price;
+          }
+        } else if (this.active[1]) {
+          if (this.yearly) {
+            this.plan = this.plans[1].title;
+            this.planPrice = this.plans[1].yearlyPrice;
+          } else {
+            this.plan = this.plans[1].title;
+            this.planPrice = this.plans[1].price;
+          }
+        } else if (this.active[2]) {
+          if (this.yearly) {
+            this.plan = this.plans[2].title;
+            this.planPrice = this.plans[2].yearlyPrice;
+          } else {
+            this.plan = this.plans[2].title;
+            this.planPrice = this.plans[2].price;
+          }
+        }
+
+    }
+    },
 };
 </script>
 
