@@ -83,6 +83,9 @@ export default {
   border-radius: 15px;
   cursor: pointer;
 }
+.addonList.activePlan {
+  border: 1px solid blue;
+}
 .addonList > div {
   display: flex;
   align-items: center;
