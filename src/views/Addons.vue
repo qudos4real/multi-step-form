@@ -50,23 +50,49 @@ export default {
       onlineService: false,
       largerStorage: false,
       customizableProfile: false,
+        addon1 : {
+          title: "",
+          price: "",
+        },
+        addon2 : {
+          title: "",
+          price: "",
+        },
+        addon3 : {
+          title: "",
+          price: "",
+        },
+        addonSelected: {
+      },
     };
   },
   methods: {
     next() {
-      this.onlineService = this.checkModel[1],
-      this.largerStorage = this.checkModel[2],
-      this.customizableProfile = this.checkModel[3],
-      this.addonSelected = {
-        onlineService: this.onlineService,
-        largerStorage: this.largerStorage,
-        customizableProfile: this.customizableProfile,
-      }
+      this.check();
       sessionStorage.setItem("addons", JSON.stringify(this.addonSelected));
+      console.log(sessionStorage);
       this.$router.push({ name: "Summary" });
     },
     back() {
       this.$router.go(-1);
+    },
+    check() {
+      if (this.checkModel[1]) {
+        this.addon1.title = this.addonServices[0].title;
+        this.addon1.price = this.addonServices[0].price;
+        this.addonSelected.addon1 = this.addon1;
+      }
+      if (this.checkModel[2]) {
+        this.addon2.title = this.addonServices[1].title;
+        this.addon2.price = this.addonServices[1].price;
+        this.addonSelected.addon2 = this.addon2;
+      }
+      if (this.checkModel[3]) {
+        this.addon3.title = this.addonServices[2].title;
+        this.addon3.price = this.addonServices[2].price;
+        this.addonSelected.addon3 = this.addon3;
+      }
+  
     },
   },
   };
@@ -93,15 +119,16 @@ export default {
 .addonList input {
   margin: 0;
   width: auto;
-  margin: auto 40px auto 0;
+  margin: auto 30px auto 10px;
   transform: scale(1.5);
   color: rgba(128, 128, 128, 0.603);
+  cursor: pointer;
 }
 
 .titleDesc > h3 {
   /* margin: 0; */
   margin-bottom: 5px;
-  color: grey;
+  color: darkblue;
 }
 .titleDesc > p {
   /* margin: 0; */

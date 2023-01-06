@@ -78,8 +78,7 @@ export default {
     next() {
       this.check();
       sessionStorage.setItem("planSelected", JSON.stringify(this.planSelected));
-      console.log(sessionStorage);
-      // this.$router.push({ name: "Addons" });
+      this.$router.push({ name: "Addons" });
     },
     back() {
       this.$router.go(-1);
