@@ -79,16 +79,19 @@ export default {
       if (this.checkModel[1]) {
         this.addon1.title = this.addonServices[0].title;
         this.addon1.price = this.addonServices[0].price;
+        this.addon1.yearPrice = this.addonServices[0].price * 10;
         this.addonSelected.addon1 = this.addon1;
       }
       if (this.checkModel[2]) {
         this.addon2.title = this.addonServices[1].title;
         this.addon2.price = this.addonServices[1].price;
+        this.addon2.yearPrice = this.addonServices[1].price * 10;
         this.addonSelected.addon2 = this.addon2;
       }
       if (this.checkModel[3]) {
         this.addon3.title = this.addonServices[2].title;
         this.addon3.price = this.addonServices[2].price;
+        this.addon3.yearPrice = this.addonServices[2].price * 10;
         this.addonSelected.addon3 = this.addon3;
       }
   

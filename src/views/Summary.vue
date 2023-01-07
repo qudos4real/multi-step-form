@@ -16,18 +16,26 @@
     <div class="add-ons">
       <div v-for="addon in addons" :key="addon.title">
         <p class="addons">
-          {{ addon.title }} <span>${{ addon.price }}{{ per }}</span>
+          {{ addon.title }}
+          <span v-if="!planSelected.yearly"
+            >${{ addon.price }}{{ per }}</span
+          ><span v-if="planSelected.yearly"
+            >${{ addon.yearPrice }}{{ per }}</span
+          >
         </p>
       </div>
     </div>
   </div>
   <div class="total">
-    <p sumText>Total <span>(per {{ yearly }})</span></p> <p class="sum">{{ total }}{{ per }}</p>
+    <p sumText>
+      Total <span>(per {{ yearly }})</span>
+    </p>
+    <p class="sum">{{ total }}{{ per }}</p>
   </div>
   <footer class="addonsFooter">
-      <h3 @click="back">Go back</h3>
-      <button class="btn footerItem" @click="next">Next</button>
-    </footer>
+    <h3 @click="back">Go back</h3>
+    <button class="btn footerItem" @click="next">Next</button>
+  </footer>
 </template>
 
 <script>
@@ -35,40 +43,45 @@ export default {
   name: "Summary",
   data() {
     return {
-      planSelected: "",
-      addonsSelected: "",
+      planSelected: {},
+      addonsSelected: {},
       yearly: "",
       addons: {},
       total: 0,
       per: "",
+      yearAddonPrice: 0,
     };
   },
   methods: {
-    next: function() {
-    sessionStorage.setItem("Total", JSON.stringify(this.total));
+    next: function () {
+      sessionStorage.setItem("Total", JSON.stringify(this.total));
       this.$router.push({ name: "ThankYou" });
-  },
-  back() {
+    },
+    back() {
       this.$router.go(-1);
     },
     totals() {
       this.total += this.planSelected.planPrice;
-      for (const key in this.addons) {
-        this.total += this.addons[key].price
+      if (this.planSelected.yearly) {
+        for (const key in this.addons) {
+          this.total += this.addons[key].yearPrice;
+        }
+      } else {
+        for (const key in this.addons) {
+        this.total += this.addons[key].price;
       }
-      console.log(this.total)
+      }
+    }
     },
-  },
-
   mounted() {
-    console.log(sessionStorage);
     this.planSelected = JSON.parse(sessionStorage.getItem("planSelected"));
+    console.log(sessionStorage);
     if (this.planSelected.yearly) {
       this.yearly = "Year";
-      this.per = '/yr'
+      this.per = "/yr";
     } else {
       this.yearly = "Month";
-      this.per = '/mo'
+      this.per = "/mo";
     }
     this.addons = JSON.parse(sessionStorage.getItem("addons"));
     this.totals();
@@ -106,7 +119,7 @@ export default {
   justify-content: space-between;
   color: gray;
 }
-.addons>span {
+.addons > span {
   color: rgba(0, 0, 139, 0.85);
 }
 .total {
@@ -120,7 +133,7 @@ export default {
 .sumText {
   color: grey;
 }
-.total>.sum {
+.total > .sum {
   font-weight: 700;
   color: blue;
   font-size: 20px;
