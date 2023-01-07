@@ -11,9 +11,9 @@
     >
       <img :src="plan.img" alt="plan" />
       <h3>{{ plan.title }}</h3>
-      <p v-if="!yearly">{{ plan.price }}</p>
+      <p v-if="!yearly">${{ plan.price }}/mo</p>
       <div class="yearly" v-if="yearly">
-        <p>{{ plan.yearlyPrice }}</p>
+        <p>${{ plan.yearlyPrice }}/yr</p>
         <p class="free">2 months free</p>
       </div>
     </div>
@@ -25,7 +25,6 @@
     </div>
     <h3 class="time" :class="{ active: yearly }">Yearly</h3>
   </div>
-  <div @click="check">Just checking</div>
   <footer>
     <h3 @click="back">Go back</h3>
     <button class="btn footerItem" @click="next">Next</button>
@@ -41,26 +40,23 @@ export default {
         {
           img: require("../assets/images/icon-arcade.svg"),
           title: "Arcade",
-          price: "$9/mo",
-          yearlyPrice: "$90/yr",
+          price: 9,
+          yearlyPrice: 90,
         },
         {
           img: require("../assets/images/icon-advanced.svg"),
           title: "Advanced ",
-          price: "$12/mo",
-          yearlyPrice: "$120/yr",
+          price: 12,
+          yearlyPrice: 120,
         },
         {
           img: require("../assets/images/icon-pro.svg"),
           title: "Pro ",
-          price: "$15/mo",
-          yearlyPrice: "$150/yr",
+          price: 15,
+          yearlyPrice: 150,
         },
       ],
       yearly: false,
-      // selectArcade: false,
-      // selectAdvanced: false,
-      // selectPro: false,
       active: [false, false, false],
       plan: "",
       planPrice: "",

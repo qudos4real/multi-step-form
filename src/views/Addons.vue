@@ -11,7 +11,7 @@
         </div>
       </div>
       <h3 class="price">
-        {{ addon.price }}
+        ${{ addon.price }}/mo
       </h3>
     </div>
     <footer class="addonsFooter">
@@ -30,19 +30,19 @@ export default {
         {
           title: "Online service",
           desc: "Access to multiplayer games",
-          price: "$1/mo",
+          price: 1,
           normIndex: 1,
         },
         {
           title: "Larger storage",
           desc: "Extra 1TB of cloud save",
-          price: "$2/mo",
+          price: 2,
           normIndex: 2,
         },
         {
           title: "Customizable Profile",
           desc: "Custom theme on your profile",
-          price: "$2/mo",
+          price: 2,
           normIndex: 3,
         },
       ],
@@ -52,15 +52,15 @@ export default {
       customizableProfile: false,
         addon1 : {
           title: "",
-          price: "",
+          price: 0,
         },
         addon2 : {
           title: "",
-          price: "",
+          price: 0,
         },
         addon3 : {
           title: "",
-          price: "",
+          price: 0,
         },
         addonSelected: {
       },
