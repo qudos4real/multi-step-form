@@ -4,17 +4,16 @@
   <div class="summaryWrapper">
     <div class="flex">
       <div>
-        <h3>
+        <h3 class="planPicked">
           {{ planSelected.plan }} <span>({{ yearly }}ly)</span>
         </h3>
 
-        <router-link to="/SelectPlan">Change</router-link>
+        <router-link to="/SelectPlan" class="router">Change</router-link>
       </div>
       <p>{{ planSelected.planPrice }}</p>
     </div>
     <hr />
     <div class="add-ons">
-      <h3>Add-ons</h3>
       <div v-for="addon in addons" :key="addon.title">
         <p class="addons">
           {{ addon.title }} <span>{{ addon.price }}</span>
@@ -23,7 +22,7 @@
     </div>
   </div>
   <div class="total">
-    <p>Total <span>(per {{ yearly }})</span></p> <p class="tran">+12/mo</p>
+    <p sumText>Total <span>(per {{ yearly }})</span></p> <p class="sum">+12/mo</p>
   </div>
 </template>
 
@@ -57,6 +56,7 @@ export default {
   border: 2px solid black;
   border-radius: 15px;
   padding: 15px;
+  margin-top: 50px;
 }
 .flex {
   display: flex;
@@ -66,10 +66,23 @@ export default {
 .flex > p {
   margin: 0;
   height: auto;
+  color: darkblue;
+  font-weight: 700;
+}
+.planPicked {
+  margin: 10px auto;
+  color: darkblue;
+}
+.router {
+  color: gray;
 }
 .addons {
   display: flex;
   justify-content: space-between;
+  color: gray;
+}
+.addons>span {
+  color: rgba(0, 0, 139, 0.85);
 }
 .total {
   display: flex;
@@ -78,5 +91,13 @@ export default {
 }
 .total span {
   text-transform: lowercase;
+}
+.sumText {
+  color: grey;
+}
+.total>.sum {
+  font-weight: 700;
+  color: blue;
+  font-size: 20px;
 }
 </style>
