@@ -59,7 +59,7 @@ export default {
       yearly: false,
       active: [false, false, false],
       plan: "",
-      planPrice: "",
+      planPrice: 0,
       timeLog: "",
     };
   },

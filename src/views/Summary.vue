@@ -10,19 +10,19 @@
 
         <router-link to="/SelectPlan" class="router">Change</router-link>
       </div>
-      <p>{{ planSelected.planPrice }}</p>
+      <p>${{ planSelected.planPrice }}{{ per }}</p>
     </div>
     <hr />
     <div class="add-ons">
       <div v-for="addon in addons" :key="addon.title">
         <p class="addons">
-          {{ addon.title }} <span>{{ addon.price }}</span>
+          {{ addon.title }} <span>${{ addon.price }}{{ per }}</span>
         </p>
       </div>
     </div>
   </div>
   <div class="total">
-    <p sumText>Total <span>(per {{ yearly }})</span></p> <p class="sum">+12/mo</p>
+    <p sumText>Total <span>(per {{ yearly }})</span></p> <p class="sum">{{ total }}{{ per }}</p>
   </div>
   <footer class="addonsFooter">
       <h3 @click="back">Go back</h3>
@@ -38,8 +38,9 @@ export default {
       planSelected: "",
       addonsSelected: "",
       yearly: "",
-      addons: "",
-      total: 0
+      addons: {},
+      total: 0,
+      per: "",
     };
   },
   methods: {
@@ -50,17 +51,27 @@ export default {
   back() {
       this.$router.go(-1);
     },
+    totals() {
+      this.total += this.planSelected.planPrice;
+      for (const key in this.addons) {
+        this.total += this.addons[key].price
+      }
+      console.log(this.total)
+    },
   },
-  
+
   mounted() {
     console.log(sessionStorage);
     this.planSelected = JSON.parse(sessionStorage.getItem("planSelected"));
     if (this.planSelected.yearly) {
       this.yearly = "Year";
+      this.per = '/yr'
     } else {
       this.yearly = "Month";
+      this.per = '/mo'
     }
     this.addons = JSON.parse(sessionStorage.getItem("addons"));
+    this.totals();
   },
 };
 </script>
