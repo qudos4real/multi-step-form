@@ -24,6 +24,10 @@
   <div class="total">
     <p sumText>Total <span>(per {{ yearly }})</span></p> <p class="sum">+12/mo</p>
   </div>
+  <footer class="addonsFooter">
+      <h3 @click="back">Go back</h3>
+      <button class="btn footerItem" @click="next">Next</button>
+    </footer>
 </template>
 
 <script>
@@ -35,9 +39,17 @@ export default {
       addonsSelected: "",
       yearly: "",
       addons: "",
+      total: 0
     };
   },
   methods: {},
+  next: function() {
+    sessionStorage.setItem("Total", JSON.stringify(this.total));
+      this.$router.push({ name: "ThankYou" });
+  },
+  back() {
+      this.$router.go(-1);
+    },
   mounted() {
     console.log(sessionStorage);
     this.planSelected = JSON.parse(sessionStorage.getItem("planSelected"));
