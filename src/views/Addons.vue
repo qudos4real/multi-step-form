@@ -70,7 +70,6 @@ export default {
     next() {
       this.check();
       sessionStorage.setItem("addons", JSON.stringify(this.addonSelected));
-      console.log(sessionStorage);
       this.$router.push({ name: "Summary" });
     },
     back() {

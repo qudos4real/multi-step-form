@@ -42,14 +42,16 @@ export default {
       total: 0
     };
   },
-  methods: {},
-  next: function() {
+  methods: {
+    next: function() {
     sessionStorage.setItem("Total", JSON.stringify(this.total));
       this.$router.push({ name: "ThankYou" });
   },
   back() {
       this.$router.go(-1);
     },
+  },
+  
   mounted() {
     console.log(sessionStorage);
     this.planSelected = JSON.parse(sessionStorage.getItem("planSelected"));
@@ -65,10 +67,10 @@ export default {
 
 <style>
 .summaryWrapper {
-  border: 2px solid black;
   border-radius: 15px;
   padding: 15px;
   margin-top: 50px;
+  background-color: rgba(128, 128, 128, 0.06);
 }
 .flex {
   display: flex;

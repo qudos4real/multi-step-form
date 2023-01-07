@@ -3,6 +3,7 @@ import PersonalInfo from '../views/PersonalInfo.vue'
 import SelectPlan from '../views/SelectPlan.vue'
 import Addons from '../views/Addons.vue'
 import Summary from '../views/Summary.vue'
+import ThankYou from '../views/ThankYou.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/Summary',
     name: 'Summary',
     component: Summary
+  },
+  {
+    path: '/ThankYou',
+    name: 'ThankYou',
+    component: ThankYou
   },
 ]
 
