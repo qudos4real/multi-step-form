@@ -64,6 +64,7 @@ export default {
       active: [false, false, false],
       plan: "",
       planPrice: "",
+      timeLog: "",
     };
   },
   computed: {
@@ -71,6 +72,7 @@ export default {
       return {
         plan: this.plan,
         planPrice: this.planPrice,
+        yearly: this.yearly,
       };
     },
   },
