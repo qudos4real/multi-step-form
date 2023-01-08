@@ -1,5 +1,5 @@
 <template>
-  <h2>Finishing up</h2>
+  <h1>Finishing up</h1>
   <p>Double-check everything looks OK before confirming.</p>
   <div class="summaryWrapper">
     <div class="flex">
@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="total">
-    <p sumText>
+    <p class="sumText">
       Total <span>(per {{ yearly }})</span>
     </p>
     <p class="sum">{{ total }}{{ per }}</p>
@@ -94,7 +94,7 @@ export default {
   border-radius: 15px;
   padding: 15px;
   margin-top: 50px;
-  background-color: rgba(128, 128, 128, 0.06);
+  background-color: hsl(231, 100%, 99%);
 }
 .flex {
   display: flex;
@@ -104,23 +104,23 @@ export default {
 .flex > p {
   margin: 0;
   height: auto;
-  color: darkblue;
+  color: hsl(213, 96%, 18%);
   font-weight: 700;
 }
 .planPicked {
   margin: 10px auto;
-  color: darkblue;
+  color: hsl(213, 96%, 18%);
 }
 .router {
-  color: gray;
+  color: hsl(231, 11%, 63%);
 }
 .addons {
   display: flex;
   justify-content: space-between;
-  color: gray;
+  color: hsl(231, 11%, 63%);
 }
 .addons > span {
-  color: rgba(0, 0, 139, 0.85);
+  color: hsl(213, 96%, 18%);
 }
 .total {
   display: flex;
@@ -131,7 +131,7 @@ export default {
   text-transform: lowercase;
 }
 .sumText {
-  color: grey;
+  color: hsl(231, 11%, 63%);
 }
 .total > .sum {
   font-weight: 700;

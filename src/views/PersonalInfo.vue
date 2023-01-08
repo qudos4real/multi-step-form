@@ -1,5 +1,5 @@
 <template>
-  <h2>Personal info</h2>
+  <h1>Personal info</h1>
   <p>Please provide your name, email address, and phone number.</p>
   <form novalidate="true">
     <label
@@ -90,18 +90,25 @@ export default {
     //   console.log(this.checkActive);
     // },
   },
-  // mounted() {
-  //   this.checkActivePage();
-  // },
 
 };
 </script>
 
 <style>
+h1 {
+  color: hsl(213, 96%, 18%);
+  margin-bottom: 5px;
+}
+h1+p {
+  color: hsl(231, 11%, 63%);
+   margin-top: 5px;
+   margin-bottom: 35px;
+}
 form > label {
   display: block;
-  margin: 25px 0 5px 0;
-  font-weight: 600;
+  margin: 25px 0 10px 0;
+  font-weight: 400;
+  color: hsl(213, 96%, 18%);
 }
 input {
   width: 100%;
@@ -110,15 +117,16 @@ input {
   padding: 15px;
   border-radius: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  color: blue;
+  border: 1px solid hsl(229, 24%, 87%);
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
 }
 input.errorInput {
-  border: 1px solid red;
+  border: 1px solid hsl(354, 84%, 57%);
 }
 input:focus {
   outline: none;
-  border: 1px solid blue;
+  border: 1px solid hsl(243, 100%, 62%);
   cursor: pointer;
 }
 .btn {
@@ -130,18 +138,17 @@ input:focus {
   border-radius: 10px;
   font-size: 16px;
   border: none;
-  background-color: blue;
+  background-color: hsl(213, 96%, 18%);
   color: hsl(217, 100%, 97%);
-  font-weight: 600;
-  margin-top: 80px;
+  font-weight: 700;
+  margin-top: 100px;
   cursor: pointer;
 }
 .btn:hover {
   background-color: rgba(0, 0, 255, 0.781);
 }
 .error {
-  color: red;
-  font-weight: 600;
+  color: hsl(354, 84%, 57%);
   float: right;
   clear: right;
 }

@@ -1,5 +1,5 @@
 <template>
-  <h2>Select your plan</h2>
+  <h1>Select your plan</h1>
   <p>You have the option of monthly or yearly billing.</p>
   <div class="plans">
     <div
@@ -19,11 +19,11 @@
     </div>
   </div>
   <div class="switch-time">
-    <h3 class="time" :class="{ active: !yearly }">Monthly</h3>
+    <h4 class="time" :class="{ active: !yearly }">Monthly</h4>
     <div class="switch">
       <input type="checkbox" v-model="yearly" />
     </div>
-    <h3 class="time" :class="{ active: yearly }">Yearly</h3>
+    <h4 class="time" :class="{ active: yearly }">Yearly</h4>
   </div>
   <footer>
     <h3 @click="back">Go back</h3>
@@ -151,34 +151,33 @@ export default {
 }
 .plan h3,
 .switch-time h3 {
-  /* font-size: 14px; */
   font-weight: 700;
-  color: rgba(0, 0, 139, 0.856);
+  color: hsl(213, 96%, 18%);
   margin-bottom: 7px;
 }
 .plan p {
   margin: 0;
   font-weight: 100;
-  color: #00000070;
+  color: hsl(231, 11%, 63%);
 }
 .activePlan {
-  border: 1px solid blue;
-  background-color: rgba(128, 128, 128, 0.047);
+  border: 1px solid hsl(243, 100%, 62%);
+  background-color: hsl(231, 100%, 99%);
 }
 .switch-time {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(207, 203, 203, 0.205);
+  background-color: hsl(231, 100%, 99%);
   margin-top: 15px;
   padding: 5px;
 }
 .switch-time > .time {
   margin: 0 10px;
-  color: rgba(0, 0, 0, 0.521);
+  color: hsl(229, 24%, 87%);
 }
 .time.active {
-  color: darkblue;
+  color: hsl(213, 96%, 18%);
 }
 .switch > input[type="checkbox"] {
   -webkit-appearance: none;
@@ -187,7 +186,7 @@ export default {
   width: 50px;
   height: 0;
   border-radius: 20px;
-  background: darkblue;
+  background: hsl(213, 96%, 18%);
   transition: background 0.3s;
   outline: none;
   border: none;
@@ -210,9 +209,9 @@ export default {
   left: 60%;
 }
 .yearly>.free {
-  font-size: 14px;
-  font-weight: 100;
-  color: darkblue;
+  font-size: 13px;
+  font-weight: 500;
+  color: hsl(213, 96%, 18%);
   margin-top: 4px;
 }
 footer {
@@ -225,7 +224,10 @@ footer {
   margin: 0 10px 0 0;
 }
 footer > h3 {
-  color: rgba(0, 0, 139, 0.856);
+  color: hsl(231, 11%, 63%);
   cursor: pointer;
+}
+footer > h3:hover {
+  color: hsl(213, 96%, 18%);
 }
 </style>

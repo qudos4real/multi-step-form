@@ -1,5 +1,5 @@
 <template>
-  <h2>Pick add-ons</h2>
+  <h1>Pick add-ons</h1>
   <p>Add-ons help enhance your gaming experience.</p>
   <div class="addonWrapper">
     <div v-for="addon, index in addonServices" :key="index" class="addonList" :class="{activePlan : checkModel[addon.normIndex]==true}">
@@ -123,23 +123,22 @@ export default {
   width: auto;
   margin: auto 30px auto 10px;
   transform: scale(1.5);
-  color: rgba(128, 128, 128, 0.603);
+  color: hsl(231, 11%, 63%);
   cursor: pointer;
 }
 
 .titleDesc > h3 {
   /* margin: 0; */
   margin-bottom: 5px;
-  color: darkblue;
+  color: hsl(213, 96%, 18%);
 }
 .titleDesc > p {
-  /* margin: 0; */
-  margin-top: 3px;
+  margin-top: 5px;
   font-size: 14px;
-  color: rgba(128, 128, 128, 0.603);
+  color: hsl(231, 11%, 63%);
 }
 .price {
-  color: rgba(0, 0, 255, 0.781);
+  color: hsl(243, 100%, 62%);
 }
 .addonsFooter {
   margin-top: 50px;

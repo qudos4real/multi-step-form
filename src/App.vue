@@ -54,12 +54,27 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: 'Ubuntu';
+  src: url( './assets/fonts/Ubuntu-Regular.ttf' );
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-weight: 500;
+  src: url( './assets/fonts/Ubuntu-Medium.ttf' );
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-weight: 700;
+  src: url( './assets/fonts/Ubuntu-Bold.ttf' );
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  /* color: #2c3e50; */
+  font-family: 'Ubuntu', sans-serif;
 }
 
 body {
@@ -77,7 +92,7 @@ body {
   justify-content: space-between;
   margin: 30px auto;
   border-radius: 10px;
-  background-color: white;
+  background-color: hsl(0, 0%, 100%);
   padding: 15px;
 }
 .common-section {
@@ -107,7 +122,7 @@ body {
   margin: 0px;
   padding: 0px;  
   padding-top: 10px;
-  color: white;
+  color: hsl(0, 0%, 100%);
 }
 .list2 {
   display: flex;
@@ -116,76 +131,25 @@ body {
   align-items: flex-start;
 }
 .step {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 100;
-  color: rgba(255, 255, 255, 0.541);
-  margin: 10px 0;
+  color: hsl(229, 24%, 87%);
+  margin: 10px 0 0 0;
+  font-weight: 100;
 }
 .title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
-  color: white;
-  margin: 10px 0;
+  color: hsl(231, 100%, 99%);
+  margin-top: 5px;
 
 }
 
 .main-section {
-  width: 55%;
+  width: 60%;
   text-align: left;
   margin: 0 30px;
 }
 
-/* .main-wrapper {
-  width: 1000px;
-  height: 600px;
-  padding: 5px; 
-  display: inline-flex;
-  justify-content: center;
-  margin-top: 30px;
-  
-}
 
-.common-section {
-  background-image: url("./assets/images/bg-sidebar-desktop.svg");
-  background-repeat: no-repeat;
-  background-size: auto;
-  height: 568px;
-  width: 20%;
-  display: inline-block;
-}
-.main-section {
-  background-color: #f5f5f5;
-  display: inline-block;
-  height: 568px;
-  width: 40%;
-  display: inline-block;
-}
-.step {
-  font-size: 14px;
-  font-weight: 700;
-  color: hsl(231, 11%, 63%);
-  margin-top: 20px;
-}
-.title {
-  font-size: 14px;
-  font-weight: 700;
-  color: white;
-  margin-top: 20px;
-}
-ol li::marker {
-  background-color: aqua;
-} */
-
-/* nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-} */
 </style>

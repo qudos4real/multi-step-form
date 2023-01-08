@@ -4,7 +4,7 @@
   <h1>
     Thank you!
   </h1>
-  <p>
+  <p class="thanksText">
  Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.
 
   </p>
@@ -20,6 +20,11 @@ export default {
 <style>
 .thanksWrapper {
 text-align: center;
-margin: 40% 10px;
+margin: 30% 10px;
+}
+.thanksText {
+  margin-top: 20px;
+  line-height: 1.5;
+  font-size: 15px;
 }
 </style>
