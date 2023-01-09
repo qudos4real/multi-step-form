@@ -75,6 +75,10 @@ export default {
   methods: {
     next() {
       this.check();
+      if (this.plan === "") {
+        alert("Please select a plan");
+        return;
+      }
       sessionStorage.setItem("planSelected", JSON.stringify(this.planSelected));
       this.$router.push({ name: "Addons" });
     },
