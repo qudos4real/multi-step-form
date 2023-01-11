@@ -95,6 +95,11 @@ body {
   box-sizing: border-box;
   background-color: hsl(217, 100%, 97%);
 }
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
 
 .main-wrapper {
   max-width: 800px;
@@ -130,12 +135,13 @@ body {
   border-radius: 50%;
   margin-right: 20px;
 }
-.list .key {
+/* .lis{
   margin: 0px;
   padding: 0px;  
   padding-top: 10px;
-  color: hsl(0, 0%, 100%);
-}
+  color: red;
+  border: 1px solid red;
+} */
 .list2 {
   display: flex;
   flex-direction: column;
@@ -156,7 +162,6 @@ body {
   margin-top: 5px;
 
 }
-
 .main-section {
   width: 60%;
   text-align: left;
@@ -165,19 +170,56 @@ body {
 /* Adding breakpoints for responsiveness */
 
 @media only screen and (max-width: 375px) {
-
+  body {
+    width: 100%;
+  }
   .main-wrapper {
     flex-direction: column;
-    width: 100%;
     margin: 0;
     padding: 0;
+  }
+  .common-section {
+    background-image: url("./assets/images/bg-sidebar-mobile.svg");
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 170px;
+  }
+  .main-section {
+    width: 80%;
+    margin: -100px auto;
+    background-color: white;
+    border-radius: 1.5em;
   }
   .list2 {
     display: none;
   }
   .list {
+    height: 0;
+    /* width: 10%; */
+    margin: 30px 0;
+    padding: 0;
+  }
+  .key {
+    position: relative;
+    top: -10px;
+  }
+
+
+  /* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-wrapper {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .list {
     width: 10%;
-    /* margin: 20px 0; */
   }
   .common-section {
     width: 100%;
@@ -185,18 +227,16 @@ body {
     margin: 0;
     padding: 0;
     background-image: url("./assets/images/bg-sidebar-mobile.svg");
-    display: inline-flex;
-    /* justify-content: space-between; */
+    display: inline-flex; 
     height: 200px 
   }
   .main-section {
-    width: 90%;
+    width: 85%;
     margin: -100px auto;
-    /* padding: 100px; */
-    /* border: 1px solid red; */
+    padding: 10px;
     background-color: hsl(0, 0%, 100%);
     border-radius: 10px;
-  }
+  } */
 }
 
 

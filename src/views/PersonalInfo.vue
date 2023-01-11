@@ -141,4 +141,7 @@ input:focus {
   float: right;
   clear: right;
 }
+@media screen and (max-width: 375px) {
+
+}
 </style>
