@@ -74,23 +74,12 @@ export default {
           email: this.email,
           phone: this.phone,
         });
-        // localStorage.setItem("name", this.name);
-        // localStorage.setItem("email", this.email);
-        // localStorage.setItem("phone", this.phone);
         sessionStorage.setItem("userData", JSON.stringify(this.userData));
         this.$router.push({ name: "SelectPlan" });
       }
     },
-    // checkActivePage: function () {
-    //   if (this.ActivePage === 1) {
-    //     this.checkActive = true;
-    //   } else {
-    //     this.checkActive = false;
-    //   }
-    //   console.log(this.checkActive);
-    // },
-  },
 
+  },
 };
 </script>
 

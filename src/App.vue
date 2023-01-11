@@ -2,7 +2,7 @@
   <div class="main-wrapper">
     <div class="common-section">
         <div v-for="item in sidebarData" :key="item.key" class="list">
-          <div class="key-wrap"><h3 class="key">{{ item.key }}</h3> </div>
+          <div class="key-wrap active"><h3 class="key">{{ item.key }} </h3> </div>
           <div class="list2">
           <h3 class="step">{{ item.step }}</h3>
           <p class="title">{{ item.title }}</p>
@@ -47,8 +47,20 @@ export default {
           title: "Summary",
         },
       ],
+      // activeStep: false,
     };
   },
+  methods: {
+    activeStep() {
+      this.activeStep = true;
+    },
+  },
+  mounted() {
+    if (this.$route.name === "PersonalInfo") {
+      console.log("PersonalInfo");
+      // this.sidebarData[0].activeStep = true;
+    } 
+  }
   
 };
 </script>
@@ -102,7 +114,7 @@ body {
   width: 40%;
   height: 568px;
   /* margin: 5px; */
-  display: inline-block;
+  /* display: inline-block; */
 }
 .list {
   margin: 20px 30px;
@@ -149,6 +161,42 @@ body {
   width: 60%;
   text-align: left;
   margin: 0 30px;
+}
+/* Adding breakpoints for responsiveness */
+
+@media only screen and (max-width: 375px) {
+
+  .main-wrapper {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .list2 {
+    display: none;
+  }
+  .list {
+    width: 10%;
+    /* margin: 20px 0; */
+  }
+  .common-section {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url("./assets/images/bg-sidebar-mobile.svg");
+    display: inline-flex;
+    /* justify-content: space-between; */
+    height: 200px 
+  }
+  .main-section {
+    width: 90%;
+    margin: -100px auto;
+    /* padding: 100px; */
+    /* border: 1px solid red; */
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 10px;
+  }
 }
 
 
