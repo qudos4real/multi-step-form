@@ -1,4 +1,5 @@
 <template>
+  <div class="wrapper">
   <h1>Pick add-ons</h1>
   <p>Add-ons help enhance your gaming experience.</p>
   <div class="addonWrapper">
@@ -14,6 +15,7 @@
         ${{ addon.price }}/mo
       </h3>
     </div>
+  </div>
     <footer class="addonsFooter">
       <h3 @click="back">Go back</h3>
       <button class="btn footerItem" @click="next">Next</button>
@@ -142,5 +144,10 @@ export default {
 }
 .addonsFooter {
   margin-top: 50px;
+}
+@media screen and (max-width: 375px) {
+  .addonList input {
+    margin: auto 15px auto 10px;
+  }
 }
 </style>
