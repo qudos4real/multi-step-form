@@ -259,8 +259,8 @@ footer > h3:hover {
 
   footer {
     background-color: hsl(231, 100%, 99%);
-    margin-left: 10px;
-    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 </style>

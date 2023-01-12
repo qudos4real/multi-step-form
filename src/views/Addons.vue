@@ -16,11 +16,11 @@
       </h3>
     </div>
   </div>
+  </div>
     <footer class="addonsFooter">
       <h3 @click="back">Go back</h3>
       <button class="btn footerItem" @click="next">Next</button>
     </footer>
-  </div>
 </template>
 
 <script>
