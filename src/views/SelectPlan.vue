@@ -1,4 +1,5 @@
 <template>
+  <div class="wrapper">
   <h1>Select your plan</h1>
   <p>You have the option of monthly or yearly billing.</p>
   <div class="plans">
@@ -10,11 +11,13 @@
       @click="toggleActive(index)"
     >
       <img :src="plan.img" alt="plan" />
+      <div>
       <h3>{{ plan.title }}</h3>
       <p v-if="!yearly">${{ plan.price }}/mo</p>
       <div class="yearly" v-if="yearly">
         <p>${{ plan.yearlyPrice }}/yr</p>
         <p class="free">2 months free</p>
+      </div>
       </div>
     </div>
   </div>
@@ -25,6 +28,7 @@
     </div>
     <h4 class="time" :class="{ active: yearly }">Yearly</h4>
   </div>
+</div> 
   <footer>
     <h3 @click="back">Go back</h3>
     <button class="btn footerItem" @click="next">Next</button>
@@ -233,5 +237,30 @@ footer > h3 {
 }
 footer > h3:hover {
   color: hsl(213, 96%, 18%);
+}
+@media screen and (max-width: 375px) {
+  .plans {
+    flex-direction: column;
+    /* align-items: stretch; */
+  }
+  .plan {
+    width: 80%;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+  }
+  .plan img {
+    margin: 0;
+    margin-right: 20px;
+  }
+  .plan h3 {
+    margin: 0;
+  }
+
+  footer {
+    background-color: hsl(231, 100%, 99%);
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 </style>
