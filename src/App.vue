@@ -55,12 +55,12 @@ export default {
       this.activeStep = true;
     },
   },
-  mounted() {
-    if (this.$route.name === "PersonalInfo") {
-      console.log("PersonalInfo");
-      // this.sidebarData[0].activeStep = true;
-    } 
-  }
+  // mounted() {
+  //   if (this.$route.name === "PersonalInfo") {
+  //     console.log("PersonalInfo");
+  //     this.sidebarData[0].activeStep = true;
+  //   } 
+  // }
   
 };
 </script>
@@ -135,6 +135,10 @@ body {
   border-radius: 50%;
   margin-right: 20px;
 }
+.key {
+    position: relative;
+    top: -8px;
+  }
 /* .lis{
   margin: 0px;
   padding: 0px;  
@@ -172,11 +176,13 @@ body {
 @media only screen and (max-width: 375px) {
   body {
     width: 100%;
+    background-color: hsl(217, 100%, 97%);
   }
   .main-wrapper {
     flex-direction: column;
     margin: 0;
     padding: 0;
+    background-color: hsl(217, 100%, 97%);
   }
   .common-section {
     background-image: url("./assets/images/bg-sidebar-mobile.svg");
@@ -187,10 +193,10 @@ body {
     height: 170px;
   }
   .main-section {
-    width: 80%;
+    width: 90%;
     margin: -100px auto;
     background-color: white;
-    border-radius: 1.5em;
+    border-radius: 1.5em 1.5em 0 0;
   }
   .list2 {
     display: none;
@@ -201,43 +207,14 @@ body {
     margin: 30px 0;
     padding: 0;
   }
+  .key-wrap {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
   .key {
     position: relative;
     top: -10px;
   }
-
-
-  /* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
-.main-wrapper {
-    flex-direction: column;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  .list {
-    width: 10%;
-  }
-  .common-section {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-image: url("./assets/images/bg-sidebar-mobile.svg");
-    display: inline-flex; 
-    height: 200px 
-  }
-  .main-section {
-    width: 85%;
-    margin: -100px auto;
-    padding: 10px;
-    background-color: hsl(0, 0%, 100%);
-    border-radius: 10px;
-  } */
-}
-
-
 </style>

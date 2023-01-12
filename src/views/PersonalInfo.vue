@@ -1,4 +1,5 @@
 <template>
+  <div class="wrapper">
   <h1>Personal info</h1>
   <p>Please provide your name, email address, and phone number.</p>
   <form novalidate="true">
@@ -34,9 +35,10 @@
       required
       v-model="phone"
       :class="{ errorInput: phoneError }"
-    />
+      />
+    </form>
+  </div>
     <button class="btn" @click.stop.prevent="submit">Next</button>
-  </form>
 </template>
 
 <script>
@@ -90,8 +92,8 @@ h1 {
 }
 h1+p {
   color: hsl(231, 11%, 63%);
-   margin-top: 5px;
-   margin-bottom: 35px;
+  margin-top: 5px;
+  margin-bottom: 35px;
 }
 form > label {
   display: block;
@@ -142,6 +144,11 @@ input:focus {
   clear: right;
 }
 @media screen and (max-width: 375px) {
-
+.wrapper {
+  padding: 20px;
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 10px;
+  background-color: hsl(0, 0%, 100%);
+}
 }
 </style>
