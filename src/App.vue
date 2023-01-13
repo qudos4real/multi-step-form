@@ -57,7 +57,6 @@ export default {
     },
     setPlan(plan) {
       this.activePlan = plan;
-      console.log(this.activePlan);
     },
     checkActiveClass(key) {
       if (key === this.activePlan) {

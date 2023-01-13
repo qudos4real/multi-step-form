@@ -70,7 +70,6 @@ export default {
         this.phoneError = this.errorMessage;
       }
       if (this.name && this.email && this.phone) {
-        console.log("Submitted form");
         this.userData.push({
           name: this.name,
           email: this.email,

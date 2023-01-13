@@ -79,7 +79,6 @@ export default {
     this.activePlan = 4;
     this.$emit("activePlan", this.activePlan);
     this.planSelected = JSON.parse(sessionStorage.getItem("planSelected"));
-    console.log(sessionStorage);
     if (this.planSelected.yearly) {
       this.yearly = "Year";
       this.per = "/yr";
