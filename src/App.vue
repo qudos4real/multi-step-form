@@ -194,16 +194,15 @@ body {
   }
   .main-section {
     width: 90%;
-    margin: -100px auto;
-    background-color: white;
-    border-radius: 1.5em 1.5em 0 0;
+    margin: -70px auto;
+    /* background-color: white; */
+    /* border-radius: 1.5em 1.5em 0 0; */
   }
   .list2 {
     display: none;
   }
   .list {
     height: 0;
-    /* width: 10%; */
     margin: 30px 0;
     padding: 0;
   }

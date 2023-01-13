@@ -1,4 +1,5 @@
 <template>
+  <div class="wrapper">
   <h1>Finishing up</h1>
   <p>Double-check everything looks OK before confirming.</p>
   <div class="summaryWrapper">
@@ -32,6 +33,7 @@
     </p>
     <p class="sum">{{ total }}{{ per }}</p>
   </div>
+</div>
   <footer class="addonsFooter">
     <h3 @click="back">Go back</h3>
     <button class="btn footerItem" @click="next">Next</button>
