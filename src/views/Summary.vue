@@ -1,39 +1,38 @@
 <template>
   <div class="wrapper">
-  <h1>Finishing up</h1>
-  <p>Double-check everything looks OK before confirming.</p>
-  <div class="summaryWrapper">
-    <div class="flex">
-      <div>
-        <h3 class="planPicked">
-          {{ planSelected.plan }} <span>({{ yearly }}ly)</span>
-        </h3>
+    <h1>Finishing up</h1>
+    <p>Double-check everything looks OK before confirming.</p>
+    <div class="summaryWrapper">
+      <div class="flex">
+        <div>
+          <h3 class="planPicked">
+            {{ planSelected.plan }} <span>({{ yearly }}ly)</span>
+          </h3>
 
-        <router-link to="/SelectPlan" class="router">Change</router-link>
+          <router-link to="/SelectPlan" class="router">Change</router-link>
+        </div>
+        <p>${{ planSelected.planPrice }}{{ per }}</p>
       </div>
-      <p>${{ planSelected.planPrice }}{{ per }}</p>
+      <hr />
+      <div class="add-ons">
+        <div v-for="addon in addons" :key="addon.title">
+          <p class="addons">
+            {{ addon.title }}
+            <span v-if="!planSelected.yearly">${{ addon.price }}{{ per }}</span
+            ><span v-if="planSelected.yearly"
+              >${{ addon.yearPrice }}{{ per }}</span
+            >
+          </p>
+        </div>
+      </div>
     </div>
-    <hr />
-    <div class="add-ons">
-      <div v-for="addon in addons" :key="addon.title">
-        <p class="addons">
-          {{ addon.title }}
-          <span v-if="!planSelected.yearly"
-            >${{ addon.price }}{{ per }}</span
-          ><span v-if="planSelected.yearly"
-            >${{ addon.yearPrice }}{{ per }}</span
-          >
-        </p>
-      </div>
+    <div class="total">
+      <p class="sumText">
+        Total <span>(per {{ yearly }})</span>
+      </p>
+      <p class="sum">{{ total }}{{ per }}</p>
     </div>
   </div>
-  <div class="total">
-    <p class="sumText">
-      Total <span>(per {{ yearly }})</span>
-    </p>
-    <p class="sum">{{ total }}{{ per }}</p>
-  </div>
-</div>
   <footer class="addonsFooter">
     <h3 @click="back">Go back</h3>
     <button class="btn footerItem" @click="next">Next</button>
@@ -52,7 +51,7 @@ export default {
       total: 0,
       per: "",
       yearAddonPrice: 0,
-      emits: ['activePlan']
+      emits: ["activePlan"],
     };
   },
   methods: {
@@ -71,14 +70,14 @@ export default {
         }
       } else {
         for (const key in this.addons) {
-        this.total += this.addons[key].price;
+          this.total += this.addons[key].price;
+        }
       }
-      }
-    }
     },
+  },
   mounted() {
     this.activePlan = 4;
-      this.$emit("activePlan", this.activePlan);
+    this.$emit("activePlan", this.activePlan);
     this.planSelected = JSON.parse(sessionStorage.getItem("planSelected"));
     console.log(sessionStorage);
     if (this.planSelected.yearly) {

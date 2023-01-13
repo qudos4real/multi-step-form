@@ -1,27 +1,26 @@
 <template>
   <div class="main-wrapper">
     <div class="common-section">
-        <div v-for="item in sidebarData" :key="item.key" class="list">
-          <div class="key-wrap" 
-          :class="checkActiveClass(item.key)"
-          ><h3 class="key">{{ item.key }} </h3> </div>
-          <div class="list2">
+      <div v-for="item in sidebarData" :key="item.key" class="list">
+        <div class="key-wrap" :class="checkActiveClass(item.key)">
+          <h3 class="key">{{ item.key }}</h3>
+        </div>
+        <div class="list2">
           <h3 class="step">{{ item.step }}</h3>
           <p class="title">{{ item.title }}</p>
         </div>
-        </div>
+      </div>
     </div>
     <div class="main-section">
       <router-view @activePlan="setPlan" />
     </div>
   </div>
-
 </template>
 
 <script>
 import PersonalInfo from "./views/PersonalInfo.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
     PersonalInfo,
   },
@@ -64,26 +63,25 @@ export default {
       if (key === this.activePlan) {
         return "active";
       }
-      
-    }
+    },
   },
 };
 </script>
 
 <style>
 @font-face {
-  font-family: 'Ubuntu';
-  src: url( './assets/fonts/Ubuntu-Regular.ttf' );
+  font-family: "Ubuntu";
+  src: url("./assets/fonts/Ubuntu-Regular.ttf");
 }
 @font-face {
-  font-family: 'Ubuntu';
+  font-family: "Ubuntu";
   font-weight: 500;
-  src: url( './assets/fonts/Ubuntu-Medium.ttf' );
+  src: url("./assets/fonts/Ubuntu-Medium.ttf");
 }
 @font-face {
-  font-family: 'Ubuntu';
+  font-family: "Ubuntu";
   font-weight: 700;
-  src: url( './assets/fonts/Ubuntu-Bold.ttf' );
+  src: url("./assets/fonts/Ubuntu-Bold.ttf");
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -91,7 +89,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   /* color: #2c3e50; */
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 body {
@@ -128,7 +126,7 @@ body {
   align-items: center;
   text-transform: uppercase;
 }
-.list>.key-wrap {
+.list > .key-wrap {
   border: white solid 1px;
   width: 40px;
   height: 40px;
@@ -136,10 +134,10 @@ body {
   margin-right: 20px;
 }
 .key {
-    position: relative;
-    top: -8px;
-    color: hsl(0, 0%, 100%);
-  }
+  position: relative;
+  top: -8px;
+  color: hsl(0, 0%, 100%);
+}
 .list2 {
   display: flex;
   flex-direction: column;
@@ -158,7 +156,6 @@ body {
   font-weight: 700;
   color: hsl(231, 100%, 99%);
   margin-top: 5px;
-
 }
 .main-section {
   width: 60%;
@@ -167,10 +164,10 @@ body {
 }
 
 .key-wrap.active {
-    background-color: hsl(206, 94%, 87%);
-    border-color: hsl(206, 94%, 87%);
-  }
-.key-wrap.active>.key {
+  background-color: hsl(206, 94%, 87%);
+  border-color: hsl(206, 94%, 87%);
+}
+.key-wrap.active > .key {
   color: hsl(213, 96%, 18%);
 }
 

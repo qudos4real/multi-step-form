@@ -1,26 +1,29 @@
 <template>
   <div class="wrapper">
-  <h1>Pick add-ons</h1>
-  <p>Add-ons help enhance your gaming experience.</p>
-  <div class="addonWrapper">
-    <div v-for="addon, index in addonServices" :key="index" class="addonList" :class="{activePlan : checkModel[addon.normIndex]==true}">
-      <div>
-        <input type="checkbox" v-model="checkModel[addon.normIndex]"/>
-        <div class="titleDesc">
-          <h3>{{ addon.title }}</h3>
-          <p>{{ addon.desc }}</p>
+    <h1>Pick add-ons</h1>
+    <p>Add-ons help enhance your gaming experience.</p>
+    <div class="addonWrapper">
+      <div
+        v-for="(addon, index) in addonServices"
+        :key="index"
+        class="addonList"
+        :class="{ activePlan: checkModel[addon.normIndex] == true }"
+      >
+        <div>
+          <input type="checkbox" v-model="checkModel[addon.normIndex]" />
+          <div class="titleDesc">
+            <h3>{{ addon.title }}</h3>
+            <p>{{ addon.desc }}</p>
+          </div>
         </div>
+        <h3 class="price">${{ addon.price }}/mo</h3>
       </div>
-      <h3 class="price">
-        ${{ addon.price }}/mo
-      </h3>
     </div>
   </div>
-  </div>
-    <footer class="addonsFooter">
-      <h3 @click="back">Go back</h3>
-      <button class="btn footerItem" @click="next">Next</button>
-    </footer>
+  <footer class="addonsFooter">
+    <h3 @click="back">Go back</h3>
+    <button class="btn footerItem" @click="next">Next</button>
+  </footer>
 </template>
 
 <script>
@@ -52,22 +55,21 @@ export default {
       onlineService: false,
       largerStorage: false,
       customizableProfile: false,
-        addon1 : {
-          title: "",
-          price: 0,
-        },
-        addon2 : {
-          title: "",
-          price: 0,
-        },
-        addon3 : {
-          title: "",
-          price: 0,
-        },
-        addonSelected: {
+      addon1: {
+        title: "",
+        price: 0,
       },
+      addon2: {
+        title: "",
+        price: 0,
+      },
+      addon3: {
+        title: "",
+        price: 0,
+      },
+      addonSelected: {},
       activePlan: 0,
-      emits : ['activePlan']
+      emits: ["activePlan"],
     };
   },
   methods: {
@@ -98,13 +100,12 @@ export default {
         this.addon3.yearPrice = this.addonServices[2].price * 10;
         this.addonSelected.addon3 = this.addon3;
       }
-  
     },
   },
   mounted() {
     this.activePlan = 3;
-      this.$emit("activePlan", this.activePlan);
-  }
+    this.$emit("activePlan", this.activePlan);
+  },
 };
 </script>
 

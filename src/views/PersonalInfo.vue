@@ -1,44 +1,44 @@
 <template>
   <div class="wrapper">
-  <h1>Personal info</h1>
-  <p>Please provide your name, email address, and phone number.</p>
-  <form novalidate="true">
-    <label
-      >Name <span class="error" v-if="nameError">{{ nameError }}</span></label
-    >
-    <input
-      type="text"
-      placeholder="e.g. Stephen King"
-      required
-      v-model="name"
-      :class="{ errorInput: nameError }"
-    />
-    <label
-      >Email Address
-      <span class="error" v-if="emailError">{{ emailError }}</span></label
-    >
-    <input
-      type="email"
-      placeholder="e.g. stephenking@lorem.com"
-      required
-      v-model="email"
-      :state="null"
-      :class="{ errorInput: emailError }"
-    />
-    <label
-      >Phone Number
-      <span class="error" v-if="phoneError">{{ phoneError }}</span></label
-    >
-    <input
-      type="tel"
-      placeholder="e.g. +1 234 567 890"
-      required
-      v-model="phone"
-      :class="{ errorInput: phoneError }"
+    <h1>Personal info</h1>
+    <p>Please provide your name, email address, and phone number.</p>
+    <form novalidate="true">
+      <label
+        >Name <span class="error" v-if="nameError">{{ nameError }}</span></label
+      >
+      <input
+        type="text"
+        placeholder="e.g. Stephen King"
+        required
+        v-model="name"
+        :class="{ errorInput: nameError }"
+      />
+      <label
+        >Email Address
+        <span class="error" v-if="emailError">{{ emailError }}</span></label
+      >
+      <input
+        type="email"
+        placeholder="e.g. stephenking@lorem.com"
+        required
+        v-model="email"
+        :state="null"
+        :class="{ errorInput: emailError }"
+      />
+      <label
+        >Phone Number
+        <span class="error" v-if="phoneError">{{ phoneError }}</span></label
+      >
+      <input
+        type="tel"
+        placeholder="e.g. +1 234 567 890"
+        required
+        v-model="phone"
+        :class="{ errorInput: phoneError }"
       />
     </form>
   </div>
-    <button class="btn" @click.stop.prevent="submit">Next</button>
+  <button class="btn" @click.stop.prevent="submit">Next</button>
 </template>
 
 <script>
@@ -84,7 +84,7 @@ export default {
   mounted() {
     this.ActivePage = 1;
     this.$emit("activePage", this.ActivePage);
-  }
+  },
 };
 </script>
 
@@ -93,7 +93,7 @@ h1 {
   color: hsl(213, 96%, 18%);
   margin-bottom: 5px;
 }
-h1+p {
+h1 + p {
   color: hsl(231, 11%, 63%);
   margin-top: 5px;
   margin-bottom: 35px;
@@ -147,11 +147,11 @@ input:focus {
   clear: right;
 }
 @media screen and (max-width: 375px) {
-.wrapper {
-  padding: 20px;
-  border: 1px solid hsl(229, 24%, 87%);
-  border-radius: 10px;
-  background-color: hsl(0, 0%, 100%);
-}
+  .wrapper {
+    padding: 20px;
+    border: 1px solid hsl(229, 24%, 87%);
+    border-radius: 10px;
+    background-color: hsl(0, 0%, 100%);
+  }
 }
 </style>

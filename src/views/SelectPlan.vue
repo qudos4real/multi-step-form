@@ -1,34 +1,34 @@
 <template>
   <div class="wrapper">
-  <h1>Select your plan</h1>
-  <p>You have the option of monthly or yearly billing.</p>
-  <div class="plans">
-    <div
-      v-for="(plan, index) in plans"
-      :key="index"
-      class="plan"
-      :class="{ activePlan: active[index] }"
-      @click="toggleActive(index)"
-    >
-      <img :src="plan.img" alt="plan" />
-      <div>
-      <h3>{{ plan.title }}</h3>
-      <p v-if="!yearly">${{ plan.price }}/mo</p>
-      <div class="yearly" v-if="yearly">
-        <p>${{ plan.yearlyPrice }}/yr</p>
-        <p class="free">2 months free</p>
-      </div>
+    <h1>Select your plan</h1>
+    <p>You have the option of monthly or yearly billing.</p>
+    <div class="plans">
+      <div
+        v-for="(plan, index) in plans"
+        :key="index"
+        class="plan"
+        :class="{ activePlan: active[index] }"
+        @click="toggleActive(index)"
+      >
+        <img :src="plan.img" alt="plan" />
+        <div>
+          <h3>{{ plan.title }}</h3>
+          <p v-if="!yearly">${{ plan.price }}/mo</p>
+          <div class="yearly" v-if="yearly">
+            <p>${{ plan.yearlyPrice }}/yr</p>
+            <p class="free">2 months free</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="switch-time">
-    <h4 class="time" :class="{ active: !yearly }">Monthly</h4>
-    <div class="switch">
-      <input type="checkbox" v-model="yearly" />
+    <div class="switch-time">
+      <h4 class="time" :class="{ active: !yearly }">Monthly</h4>
+      <div class="switch">
+        <input type="checkbox" v-model="yearly" />
+      </div>
+      <h4 class="time" :class="{ active: yearly }">Yearly</h4>
     </div>
-    <h4 class="time" :class="{ active: yearly }">Yearly</h4>
   </div>
-</div> 
   <footer>
     <h3 @click="back">Go back</h3>
     <button class="btn footerItem" @click="next">Next</button>
@@ -65,7 +65,7 @@ export default {
       plan: "",
       planPrice: 0,
       timeLog: "",
-      emits: ['activePlan']
+      emits: ["activePlan"],
     };
   },
   computed: {
@@ -106,38 +106,37 @@ export default {
       }
     },
     check() {
-        if (this.active[0]) {
-          if (this.yearly) {
-            this.plan = this.plans[0].title;
-            this.planPrice = this.plans[0].yearlyPrice;
-          } else {
-            this.plan = this.plans[0].title;
-            this.planPrice = this.plans[0].price;
-          }
-        } else if (this.active[1]) {
-          if (this.yearly) {
-            this.plan = this.plans[1].title;
-            this.planPrice = this.plans[1].yearlyPrice;
-          } else {
-            this.plan = this.plans[1].title;
-            this.planPrice = this.plans[1].price;
-          }
-        } else if (this.active[2]) {
-          if (this.yearly) {
-            this.plan = this.plans[2].title;
-            this.planPrice = this.plans[2].yearlyPrice;
-          } else {
-            this.plan = this.plans[2].title;
-            this.planPrice = this.plans[2].price;
-          }
+      if (this.active[0]) {
+        if (this.yearly) {
+          this.plan = this.plans[0].title;
+          this.planPrice = this.plans[0].yearlyPrice;
+        } else {
+          this.plan = this.plans[0].title;
+          this.planPrice = this.plans[0].price;
         }
-
-    }
+      } else if (this.active[1]) {
+        if (this.yearly) {
+          this.plan = this.plans[1].title;
+          this.planPrice = this.plans[1].yearlyPrice;
+        } else {
+          this.plan = this.plans[1].title;
+          this.planPrice = this.plans[1].price;
+        }
+      } else if (this.active[2]) {
+        if (this.yearly) {
+          this.plan = this.plans[2].title;
+          this.planPrice = this.plans[2].yearlyPrice;
+        } else {
+          this.plan = this.plans[2].title;
+          this.planPrice = this.plans[2].price;
+        }
+      }
     },
-    mounted() {
-      this.activePlan = 2;
-      this.$emit("activePlan", this.activePlan);
-    }
+  },
+  mounted() {
+    this.activePlan = 2;
+    this.$emit("activePlan", this.activePlan);
+  },
 };
 </script>
 
@@ -221,7 +220,7 @@ export default {
 .switch > input[type="checkbox"]:checked::after {
   left: 60%;
 }
-.yearly>.free {
+.yearly > .free {
   font-size: 13px;
   font-weight: 500;
   color: hsl(213, 96%, 18%);
