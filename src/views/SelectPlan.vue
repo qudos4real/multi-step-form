@@ -65,6 +65,7 @@ export default {
       plan: "",
       planPrice: 0,
       timeLog: "",
+      emits: ['activePlan']
     };
   },
   computed: {
@@ -133,6 +134,10 @@ export default {
 
     }
     },
+    mounted() {
+      this.activePlan = 2;
+      this.$emit("activePlan", this.activePlan);
+    }
 };
 </script>
 

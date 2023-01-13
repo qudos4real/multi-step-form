@@ -2,7 +2,9 @@
   <div class="main-wrapper">
     <div class="common-section">
         <div v-for="item in sidebarData" :key="item.key" class="list">
-          <div class="key-wrap active"><h3 class="key">{{ item.key }} </h3> </div>
+          <div class="key-wrap" 
+          :class="checkActiveClass(item.key)"
+          ><h3 class="key">{{ item.key }} </h3> </div>
           <div class="list2">
           <h3 class="step">{{ item.step }}</h3>
           <p class="title">{{ item.title }}</p>
@@ -10,7 +12,7 @@
         </div>
     </div>
     <div class="main-section">
-      <router-view />
+      <router-view @activePlan="setPlan" />
     </div>
   </div>
 
@@ -47,21 +49,24 @@ export default {
           title: "Summary",
         },
       ],
-      // activeStep: false,
+      activePlan: 1,
     };
   },
   methods: {
     activeStep() {
       this.activeStep = true;
     },
+    setPlan(plan) {
+      this.activePlan = plan;
+      console.log(this.activePlan);
+    },
+    checkActiveClass(key) {
+      if (key === this.activePlan) {
+        return "active";
+      }
+      
+    }
   },
-  // mounted() {
-  //   if (this.$route.name === "PersonalInfo") {
-  //     console.log("PersonalInfo");
-  //     this.sidebarData[0].activeStep = true;
-  //   } 
-  // }
-  
 };
 </script>
 
@@ -95,11 +100,6 @@ body {
   box-sizing: border-box;
   background-color: hsl(217, 100%, 97%);
 }
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
 
 .main-wrapper {
   max-width: 800px;
@@ -138,14 +138,8 @@ body {
 .key {
     position: relative;
     top: -8px;
+    color: hsl(0, 0%, 100%);
   }
-/* .lis{
-  margin: 0px;
-  padding: 0px;  
-  padding-top: 10px;
-  color: red;
-  border: 1px solid red;
-} */
 .list2 {
   display: flex;
   flex-direction: column;
@@ -171,6 +165,15 @@ body {
   text-align: left;
   margin: 0 30px;
 }
+
+.key-wrap.active {
+    background-color: hsl(206, 94%, 87%);
+    border-color: hsl(206, 94%, 87%);
+  }
+.key-wrap.active>.key {
+  color: hsl(213, 96%, 18%);
+}
+
 /* Adding breakpoints for responsiveness */
 
 @media only screen and (max-width: 375px) {
@@ -203,7 +206,7 @@ body {
   }
   .list {
     height: 0;
-    margin: 30px 0;
+    margin: 50px 0;
     padding: 0;
   }
   .key-wrap {

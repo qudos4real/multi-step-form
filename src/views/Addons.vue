@@ -66,6 +66,8 @@ export default {
         },
         addonSelected: {
       },
+      activePlan: 0,
+      emits : ['activePlan']
     };
   },
   methods: {
@@ -99,7 +101,11 @@ export default {
   
     },
   },
-  };
+  mounted() {
+    this.activePlan = 3;
+      this.$emit("activePlan", this.activePlan);
+  }
+};
 </script>
 
 <style>

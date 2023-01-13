@@ -52,6 +52,7 @@ export default {
       total: 0,
       per: "",
       yearAddonPrice: 0,
+      emits: ['activePlan']
     };
   },
   methods: {
@@ -76,6 +77,8 @@ export default {
     }
     },
   mounted() {
+    this.activePlan = 4;
+      this.$emit("activePlan", this.activePlan);
     this.planSelected = JSON.parse(sessionStorage.getItem("planSelected"));
     console.log(sessionStorage);
     if (this.planSelected.yearly) {

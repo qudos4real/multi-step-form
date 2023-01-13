@@ -54,8 +54,8 @@ export default {
       emailError: "",
       phoneError: "",
       errorMessage: "This field is required",
-      ActivePage: 1,
-      checkActive: false,
+      ActivePage: 0,
+      emits: ["activePage"],
     };
   },
   methods: {
@@ -80,8 +80,11 @@ export default {
         this.$router.push({ name: "SelectPlan" });
       }
     },
-
   },
+  mounted() {
+    this.ActivePage = 1;
+    this.$emit("activePage", this.ActivePage);
+  }
 };
 </script>
 
